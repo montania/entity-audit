@@ -764,6 +764,8 @@ class RelationTest extends BaseTest
      */
     public function testJoinOnObject()
     {
+        $this->expectNotToPerformAssertions();
+
         $page = new Page();
         $this->em->persist($page);
         $this->em->flush();

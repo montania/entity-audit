@@ -36,7 +36,7 @@ use SimpleThings\EntityAudit\AuditConfiguration;
 use SimpleThings\EntityAudit\AuditManager;
 use SimpleThings\EntityAudit\Metadata\Driver\AnnotationDriver;
 
-abstract class BaseTest extends \PHPUnit_Framework_TestCase
+abstract class BaseTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Connection|null
@@ -60,7 +60,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 
     protected $fixturesPath;
 
-    public function setUp()
+    public function setUp():void
     {
         $this->getEntityManager();
         $this->getSchemaTool();
@@ -68,7 +68,7 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
         $this->setUpEntitySchema();
     }
 
-    public function tearDown()
+    public function tearDown():void
     {
         $this->tearDownEntitySchema();
         $this->em = null;
@@ -86,8 +86,8 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
         }
 
         $config = new Configuration();
-        $config->setMetadataCacheImpl(new ArrayCache());
-        $config->setQueryCacheImpl(new ArrayCache());
+//        $config->setMetadataCacheImpl(new ArrayCache());
+//        $config->setQueryCacheImpl(new ArrayCache());
         $config->setProxyDir(__DIR__ . '/Proxies');
         $config->setAutoGenerateProxyClasses(ProxyFactory::AUTOGENERATE_EVAL);
         $config->setProxyNamespace('SimpleThings\EntityAudit\Tests\Proxies');
